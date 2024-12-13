@@ -3,25 +3,20 @@
              xmlns:vm="clr-namespace:CrashBash.ViewModels"
              x:Class="CrashBash.MainPage">
 
-    <!-- Устанавливаем GameViewModel как BindingContext -->
     <ContentPage.BindingContext>
         <vm:GameViewModel />
     </ContentPage.BindingContext>
 
     <Grid>
         
-        <!-- Отображение игрового поля -->
         <CollectionView ItemsSource="{Binding Cells}" 
                          SelectionMode="Single">
             <CollectionView.ItemsLayout>
-                <!-- Задаем сеточный макет для коллекции -->
                 <GridItemsLayout Orientation="Vertical" 
                                  Span="8" />
-                <!-- 8 колонок -->
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <!-- Клетка поля -->
                     <Frame BackgroundColor="{Binding CandyType}" 
                            HeightRequest="50" 
                            WidthRequest="50" 

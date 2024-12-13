@@ -14,11 +14,9 @@ public class GameViewModel
 
     public GameViewModel()
     {
-        // Инициализация игрового поля
         var gameBoard = new Gameboard(8, 8);
         Cells = new ObservableCollection<Cell>(gameBoard.Cells);
 
-        // Инициализация команды
         SelectCommand = new Command<Cell>(OnCellSelected);
     }
 
@@ -27,11 +25,10 @@ public class GameViewModel
         if (_selectedCell == null)
         {
             _selectedCell = selectedCell;
-            selectedCell.IsSelected = true; // Выделяем клетку
+            selectedCell.IsSelected = true; 
         }
         else
         {
-            // Обрабатываем выбор второй клетки
             SwapCandies(_selectedCell, selectedCell);
             _selectedCell.IsSelected = false;
             _selectedCell = null;
@@ -40,12 +37,10 @@ public class GameViewModel
 
     private void SwapCandies(Cell firstCell, Cell secondCell)
     {
-        // Меняем местами типы конфет
         var tempType = firstCell.CandyType;
         firstCell.CandyType = secondCell.CandyType;
         secondCell.CandyType = tempType;
 
-        // Проверяем матчи после перемещения
         CheckForMatches();
     }
 
