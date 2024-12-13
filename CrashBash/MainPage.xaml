@@ -1,28 +1,35 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:CandyCrushClone.ViewModels"
-             x:Class="CandyCrushClone.MainPage">
+             xmlns:vm="clr-namespace:CrashBash.ViewModels"
+             x:Class="CrashBash.MainPage">
 
+    <!-- Устанавливаем GameViewModel как BindingContext -->
     <ContentPage.BindingContext>
         <vm:GameViewModel />
     </ContentPage.BindingContext>
 
     <Grid>
+        
+        <!-- Отображение игрового поля -->
         <CollectionView ItemsSource="{Binding Cells}" 
                          SelectionMode="Single">
             <CollectionView.ItemsLayout>
+                <!-- Задаем сеточный макет для коллекции -->
                 <GridItemsLayout Orientation="Vertical" 
                                  Span="8" />
+                <!-- 8 колонок -->
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    <!-- Клетка поля -->
                     <Frame BackgroundColor="{Binding CandyType}" 
                            HeightRequest="50" 
                            WidthRequest="50" 
                            CornerRadius="10"
                            Margin="2">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectCommand}" />
+                            <TapGestureRecognizer Command="{Binding BindingContext.SelectCommand, Source={x:Reference CollectionView}}" 
+                                                  CommandParameter="{Binding}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
