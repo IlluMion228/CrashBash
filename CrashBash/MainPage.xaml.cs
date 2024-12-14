@@ -46,7 +46,9 @@ namespace CrashBash
                     _buttons[row, col] = button;
 
                     // Добавляем кнопку в сетку
-                    GameGrid.Children.Add(button, col, row);
+                    GameGrid.Children.Add(button);
+                    
+
                 }
             }
         }
