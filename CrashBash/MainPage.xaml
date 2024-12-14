@@ -1,34 +1,32 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:CrashBash.ViewModels"
-             x:Class="CrashBash.MainPage">
+             x:Class="CrashBash.MainPage"
+             Title="CrashBash">
 
-    <ContentPage.BindingContext>
-        <vm:GameViewModel />
-    </ContentPage.BindingContext>
 
-    <Grid>
-        
-        <CollectionView ItemsSource="{Binding Cells}" 
-                         SelectionMode="Single">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" 
-                                 Span="8" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BackgroundColor="{Binding CandyType}" 
-                           HeightRequest="50" 
-                           WidthRequest="50" 
-                           CornerRadius="10"
-                           Margin="2">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.SelectCommand, Source={x:Reference CollectionView}}" 
-                                                  CommandParameter="{Binding}" />
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+    <!-- Общий контейнер -->
+    <Grid RowDefinitions="Auto,*" Padding="10" BackgroundColor="#f0f0f0">
+        <!-- Верхняя панель с кнопкой перезапуска и счетом -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Grid.Row="0">
+            <Button Text="Restart" 
+                    Clicked="OnRestartClicked"
+                    BackgroundColor="#FF69B4" 
+                    TextColor="White" 
+                    FontAttributes="Bold" 
+                    WidthRequest="100" />
+
+            <Label x:Name="ScoreLabel" 
+                   Text="Score: 0" 
+                   FontSize="20" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   Margin="20,0,0,0" />
+        </StackLayout>
+
+        <Grid x:Name="GameGrid" Grid.Row="1" BackgroundColor="White"
+              HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+        </Grid>
     </Grid>
 </ContentPage>
