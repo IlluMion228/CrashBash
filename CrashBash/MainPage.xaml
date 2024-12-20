@@ -5,9 +5,7 @@
              Title="CrashBash">
 
 
-    <!-- Общий контейнер -->
     <Grid RowDefinitions="Auto,*" Padding="10" BackgroundColor="#f0f0f0">
-        <!-- Верхняя панель с кнопкой перезапуска и счетом -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Grid.Row="0">
             <Button Text="Restart" 
                     Clicked="OnRestartClicked"

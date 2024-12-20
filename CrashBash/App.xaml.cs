@@ -8,7 +8,7 @@ namespace CrashBash
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage()); // Установка стартовой страницы
+            MainPage = new NavigationPage(new MainPage()); 
         }
     }
 }
