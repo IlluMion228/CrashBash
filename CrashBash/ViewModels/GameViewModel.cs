@@ -84,7 +84,7 @@ public class GameViewModel
 
         foreach (var cell in matchedCells)
         {
-            cell.CandyType = null; 
+            cell.CandyType = "Empty"; 
         }
 
         GenerateNewCandies();

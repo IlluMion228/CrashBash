@@ -13,6 +13,7 @@ namespace CrashBash
         {
             
             InitializeGameGrid();
+            InitializeComponent();
         }
 
         private void InitializeGameGrid()
@@ -61,9 +62,16 @@ namespace CrashBash
         {
             if (sender is Button button)
             {
-                button.BackgroundColor = Colors.Gray; 
-                _score += 10; 
-                ScoreLabel.Text = $"Score: {_score}"; 
+                int row = Grid.GetRow(button);
+                int column = Grid.GetColumn(button);
+
+                if (_buttons[row, column] == button)
+                {
+
+                    button.BackgroundColor = Colors.Grey;
+                    _score += 10;
+                    ScoreLabel.Text = $"Score: {_score}";
+                }
             }
         }
 
